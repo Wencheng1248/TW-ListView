@@ -10,17 +10,16 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ModuleAdapter extends ArrayAdapter<module> {
-
-    private ArrayList<module> modules;
+public class yearAdapter extends ArrayAdapter<year> {
+    private ArrayList<year> years;
     private Context context;
-    private TextView tvModuleName;
-    private ImageView ivComputer;
+    private TextView tvYear;
 
-    public ModuleAdapter(Context context, int resource, ArrayList<module> objects){
+
+    public yearAdapter(Context context, int resource, ArrayList<year> objects){
         super(context, resource, objects);
         // Store the moduleName that is passed to this adapter
-        modules = objects;
+        years = objects;
         // Store Context object as we would need to use it later
         this.context = context;
     }
@@ -34,28 +33,22 @@ public class ModuleAdapter extends ArrayAdapter<module> {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         // "Inflate" the row.xml as the layout for the View object
-        View rowView = inflater.inflate(R.layout.rowmodule, parent, false);
+        View rowView = inflater.inflate(R.layout.rowyear, parent, false);
 
         // Get the TextView object
-        tvModuleName = (TextView) rowView.findViewById(R.id.tvYear);
-        // Get the ImageView object
-        ivComputer = (ImageView) rowView.findViewById(R.id.imageView);
+        tvYear = (TextView) rowView.findViewById(R.id.tvYear);
+
 
 
         // The parameter "position" is the index of the
         //  row ListView is requesting.
         //  We get back the food at the same index.
         //Infront use class behind use array list to retrieve index
-        module currentFood = modules.get(position);
+        year currentYear = years.get(position);
         // Set the TextView to show the food
 
-        tvModuleName.setText(currentFood.getName());
-        // Set the image to star or nostar accordingly
-        if (currentFood.isProgramming()) {
-            ivComputer.setImageResource(R.drawable.prog);
-        } else {
-            ivComputer.setImageResource(R.drawable.nonprog);
-        }
+        tvYear.setText(currentYear.getName());
+
         // Return the nicely done up View to the ListView
         return rowView;
     }
